@@ -14,3 +14,9 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.item-input-has-focus .label-md[floating], .input-has-focus .label-md[floating], .item-input-has-value .label-md[floating], .input-has-value .label-md[floating]{
+    font-size: 12px !important;
+    -webkit-transform: none;
+    transform: none;
+}
