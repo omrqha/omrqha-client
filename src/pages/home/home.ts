@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ENTERPRISE_LIST } from '../../mocks/enterprise/enterprise';
 import { Enterprise } from '../../models/enterprise/enterprise';
 
