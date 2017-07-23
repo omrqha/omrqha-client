@@ -1,0 +1,11 @@
+<ion-row>
+  <ion-col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 *ngFor="let item of serviceProvidersList;let i = index">
+    <ion-card (click)="onEvent('onItemClick', item.title, $event)">
+      <img images-filter src="{{item.imageUrl}}" />
+      <div class="card-description">
+        <div card-title>{{item.name}}</div>
+        <div card-subtitle>{{item.desc}}</div>
+      </div>
+    </ion-card>
+  </ion-col>
+</ion-row>

@@ -14,8 +14,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TabsPage {
 
+  homePage = 'HomePage';
+  serviceProvidersPage = 'ServiceProvidersPage';
+  //serviceProvidersPage = ServiceProviderPage;
+  tasksPage = 'TasksPage';
+  profilePage = 'ProfilePage';
+
   constructor() {
-   
+
   }
 
 
