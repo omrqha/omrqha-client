@@ -1,0 +1,29 @@
+<ion-grid>
+  <ion-row wrap padding>
+    <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+      <button ion-button button-clear clear  (click)="onEvent('onSkip')">Skip</button>
+      <!---Logo-->
+      <ion-thumbnail>
+        <img [src]="">
+      </ion-thumbnail>
+      <!---Input field username-->
+      <ion-item no-padding >
+        <ion-label color="secondary" floating>yyy</ion-label>
+        <ion-input required type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <!---Input field password-->
+      <ion-item no-padding>
+        <ion-label color="secondary" floating>xxx</ion-label>
+        <ion-input required type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <!---Login button-->
+      <button ion-button right default-button (click)="navigateToPage('TabsPage')">Login</button>
+    </ion-col>
+    <!---Share Section-->
+    <ion-col col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6 social>
+      <!---Facebook button-->
+      <button ion-button color="facebook" (click)="loginByFacebook()">Facebook</button>
+
+    </ion-col><!---End Share Section-->
+  </ion-row>
+</ion-grid>

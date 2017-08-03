@@ -1,28 +1,34 @@
 import { Injectable } from '@angular/core';
-
+import {Http, Response} from '@angular/http';
+import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
-import {SERVICE_PROVIDER_LIST} from '../../mocks/service-provider/service-provider'
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
 
-/*
-  Generated class for the ServiceProvidersProvider provider.
+import {AppSettingsProvider} from "../app-settings/app-settings";
+import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
+
 @Injectable()
 export class ServiceProvidersProvider {
 
-  serviceProvidersList = SERVICE_PROVIDER_LIST;
+  private baseUrl:string = this.appSettingsProvider.baseUrl();
 
-  constructor() {
+  constructor(private http:Http, private appSettingsProvider:AppSettingsProvider) {
     console.log('Hello ServiceProvidersProvider Provider');
   }
 
-  getServiceProvidersList() {
-    return this.serviceProvidersList;
-  }
-  getServiceProviderById(id:string) {
-    return this.serviceProvidersList[id];
+  getServiceProvidersList(query):  Observable<ServiceProvider[]> {
+
+    const { limit = '50', skip = '0', domainId = '0' } = query;
+    return this.http.get(`${this.baseUrl}/serviceProviders?limit=${limit}&skip=${skip}&domainId=${domainId}`)
+      .do((data => console.log(data)))
+      .map((data: Response) => data.json())
+      .do((data => console.log(data)))
+      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
+
   }
 
 

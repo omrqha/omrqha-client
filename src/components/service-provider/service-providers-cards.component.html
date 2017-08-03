@@ -1,10 +1,22 @@
+<ion-row header-bcg padding >
+  <ul class="domain-container">
+    <li *ngFor="let item of domainList" (click)="filterServiceProvicerByDomain(item)">
+      <div class="domain-item">
+        <div>{{item.domainName}}</div>
+        <img src="https://s-media-cache-ak0.pinimg.com/originals/2e/90/fc/2e90fc5c01dbc346d35e47cb92377c11.png">
+      </div>
+    </li>
+  </ul>
+</ion-row>
+
+
 <ion-row>
-  <ion-col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 *ngFor="let item of serviceProvidersList;let i = index">
-    <ion-card (click)="onEvent('onItemClick', item.title, $event)">
-      <img images-filter src="{{item.imageUrl}}" />
+  <ion-col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 *ngFor="let item of filteredServiceProvidersList;let i = index">
+    <ion-card (click)="navigateToServiceProvider(item)">
+      <img images-filter src="{{item.serviceProviderImagesUrl[0]}}" />
       <div class="card-description">
-        <div card-title>{{item.name}}</div>
-        <div card-subtitle>{{item.desc}}</div>
+        <div card-title>{{item.serviceProviderName}}</div>
+        <div card-subtitle>{{item.serviceProviderDesc}}</div>
       </div>
     </ion-card>
   </ion-col>

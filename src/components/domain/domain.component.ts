@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {DomainProvider} from "../../providers/domain/domain";
-import {ServiceProvider} from "../../models/service-provider/service-provider";
+import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
 
 /**
  * Generated class for the DomainComponent component.
@@ -14,10 +14,19 @@ import {ServiceProvider} from "../../models/service-provider/service-provider";
 })
 export class DomainComponent {
 
+  @Output() serviceProviderFilter: EventEmitter<any>;
+
   filteredServiceProvidersList: ServiceProvider[];
   domainList: any[];
   constructor(domainProvider: DomainProvider) {
-    this.domainList = domainProvider.getDomainList();
+    this.serviceProviderFilter = new EventEmitter<any>();
+
+    console.log("ss");
+  }
+
+  filterServiceProvicerByDomain(domain){
+    console.log("1");
+    this.serviceProviderFilter.emit(domain);
   }
 
 

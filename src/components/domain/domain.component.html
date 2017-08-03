@@ -1,9 +1,9 @@
 <ion-row header-bcg padding>
 
   <ul class="domain-container">
-    <li *ngFor="let item of domainList">
+    <li *ngFor="let item of domainList" (click)="filterServiceProvicerByDomain(item)">
       <div class="domain-item">
-        <div>{{item.name}}</div>
+        <div>{{item.domainName}}</div>
         <img src="https://s-media-cache-ak0.pinimg.com/originals/2e/90/fc/2e90fc5c01dbc346d35e47cb92377c11.png">
       </div>
 

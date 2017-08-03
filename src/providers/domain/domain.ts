@@ -1,67 +1,30 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
 
-/*
-  Generated class for the DomainProvider provider.
+import { Domain } from '../../models/domain/domain.interface';
+import { AppSettingsProvider } from '../app-settings/app-settings';
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
 @Injectable()
 export class DomainProvider {
+  private baseUrl:string = this.appSettingsProvider.baseUrl();
 
-  domainList = [
-    {
-      id: 1,
-      name: "Music",
-      logo: ""
-    },
-    {
-      id: 2,
-      name: "Food",
-      logo: ""
-    },
-    {
-      id: 3,
-      name: "Place",
-      logo: ""
-    },
-    {
-      id: 4,
-      name: "Place",
-      logo: ""
-    },
-    {
-      id: 5,
-      name: "Place",
-      logo: ""
-    },
-    {
-      id: 6,
-      name: "Place",
-      logo: ""
-    },
-    {
-      id: 7,
-      name: "Place",
-      logo: ""
-    },
-    {
-      id: 8,
-      name: "Place",
-      logo: ""
-    },
-    {
-      id: 9,
-      name: "Place",
-      logo: ""
-    }
-  ];
-  constructor() {
+  constructor(private http:Http, private appSettingsProvider:AppSettingsProvider) {
     console.log('Hello DomainProvider Provider');
   }
-  getDomainList = function () {
-    return this.domainList;
+
+  getDomainList(): Observable<Domain[]> {
+    return this.http.get(`${this.baseUrl}/domains`)
+      //.do((data => console.log(data)))
+      .map((data: Response) => data.json())
+      //.do((data => console.log(data)))
+      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
+
   }
 
 }

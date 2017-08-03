@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ServiceProvider} from "../../models/service-provider/service-provider"
-import {DomainProvider} from "../../providers/domain/domain";
+
 
 /**
  * Generated class for the ServiceProvidersPage page.
@@ -16,11 +15,15 @@ import {DomainProvider} from "../../providers/domain/domain";
 })
 export class ServiceProvidersPage {
 
-  filteredServiceProvidersList: ServiceProvider[];
   domainList: any[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, domainProvider: DomainProvider) {
-    this.domainList = domainProvider.getDomainList();
+  constructor(private navCtrl: NavController, private navParams: NavParams) {
+
+  }
+
+
+  filterServiceProviderByDomain(event){ //this come from domain component emitter event
+    console.log(event);
   }
 
 
