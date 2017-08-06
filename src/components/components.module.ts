@@ -4,6 +4,7 @@ import { ServiceProvidersCardsComponent } from './service-provider/service-provi
 import { ServiceProviderDetailsComponent } from './service-provider-details/service-provider-details.component';
 import { DomainComponent } from './domain/domain.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ElasticHeaderDirective } from  '../directives/elastic-header/elastic-header'
 
 
 @NgModule({
@@ -11,14 +12,16 @@ import { LoginFormComponent } from './login-form/login-form.component';
     LoginFormComponent,
     ServiceProvidersCardsComponent,
     ServiceProviderDetailsComponent,
-    DomainComponent
+    DomainComponent,
+    ElasticHeaderDirective
   ],
   imports: [IonicModule],
   exports: [
     LoginFormComponent,
     ServiceProvidersCardsComponent,
     ServiceProviderDetailsComponent,
-    DomainComponent
+    DomainComponent,
+    ElasticHeaderDirective
   ]
 })
 

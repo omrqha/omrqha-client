@@ -1,32 +1,85 @@
-<ion-item no-lines background-size id="elastic-header"
-          [ngStyle]="{'background-image': 'url(' + serviceProvider.serviceProviderImagesUrl[0] + ')'}">
-</ion-item>
-<!--- Social Share-->
-<ion-item no-lines color="primary" dir="ltr">
-  <ion-icon icon-small >
-    <i class="icon icon-thumb-up"></i>
-  </ion-icon>
-  <ion-icon icon-small >
-    <i class="icon icon-comment"></i>
-  </ion-icon>
-  <ion-icon icon-small >
-    <i class="icon icon-share-variant"></i>
-  </ion-icon>
-</ion-item>
-<!--Parallax Title-->
-<ion-item item-bcg no-lines>
-  <h1 parallax-title>{{serviceProvider.serviceProviderName}}</h1>
-  <h3 item-subtitle>הרצליה , הקוצרים 13</h3>
-</ion-item>
-<!--Parallax Rateing-->
-<ion-item item-bcg no-margin padding-right>
-  <ion-icon *ngFor="let item of [{isActive:true},{isActive:true},{isActive:true},{isActive:true},{isActive:false}];let i = index" >
-    <i icon-small *ngIf="item.isActive" class="icon icon-star"></i>
-    <i icon-small *ngIf="!item.isActive" class="icon icon-star-outline"></i>
-  </ion-icon>
-  <span span-small>({{500}})</span>
-</ion-item>
+<ion-content elastic-header has-header  dir="rtl">
+  <ion-item no-lines background-size id="elastic-header"
+            [ngStyle]="{'background-image': 'url(' + serviceProvider.serviceProviderImagesUrl[0] + ')'}">
+  </ion-item>
+  <!--- Social Share-->
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item no-lines >
+          <ion-icon icon-small >
+            <i class="icon icon-thumb-up"></i>
+          </ion-icon>
+          <ion-icon icon-small >
+            <i class="icon icon-comment"></i>
+          </ion-icon>
+          <ion-icon icon-small >
+            <i class="icon icon-share-variant"></i>
+          </ion-icon>
+        </ion-item>
 
-<ion-item item-bcg text-wrap no-margin padding-right>
-  <h3 item-subtitle>{{serviceProvider.serviceProviderDesc}} <ion-icon name="ios-more-outline"></ion-icon></h3>
-</ion-item>
+      </ion-col>
+      <!--Parallax Title-->
+      <ion-col col-12>
+        <ion-item item-bcg no-lines>
+            <h1 parallax-title>{{serviceProvider.serviceProviderName}}</h1>
+            <h3 item-subtitle>הרצליה , הקוצרים 13</h3>
+
+        </ion-item>
+      </ion-col>
+      <!--Parallax Rateing-->
+      <ion-col col-12>
+
+        <ion-item item-bcg no-margin padding-right>
+          <ion-icon *ngFor="let item of [{isActive:true},{isActive:true},{isActive:true},{isActive:true},{isActive:false}];let i = index" >
+            <i icon-small *ngIf="item.isActive" class="icon icon-star"></i>
+            <i icon-small *ngIf="!item.isActive" class="icon icon-star-outline"></i>
+          </ion-icon>
+          <span span-small>({{500}})</span>
+        </ion-item>
+
+      </ion-col>
+      <!--Content-->
+      <!-- Description 1-->
+      <ion-col col-12>
+        <ion-item item-bcg text-wrap no-margin padding-right>
+          <h3 item-subtitle>ddddddddddddddd</h3>
+        </ion-item>
+        <!--Info-->
+        <ion-item item-bcg no-margin padding-right>
+          <div info *ngFor="let item of [{name: 'ss', value: 1}, {name: 'rrrr', value: 2}];let i = index">
+            <span item-subtitle left margin-right>{{item.name}}</span>
+            <p item-subtitle>{{item.value}}</p>
+          </div>
+          <!-- Description 2-->
+        </ion-item>
+        <ion-item item-bcg text-wrap no-margin padding-right>
+          <h3 item-subtitle>ddddddddd</h3>
+        </ion-item>
+        <!-- Description 3-->
+        <ion-item item-bcg text-wrap no-margin padding-right>
+          <h3 item-subtitle>ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</h3>
+        </ion-item>
+        <!-- Description 4-->
+        <ion-item item-bcg text-wrap no-lines no-margin padding-right>
+          <h3 item-subtitle>dddddddddddddddddddddddddddddddddddd</h3>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="reviews">
+      <ion-col col-12>
+        <ion-list no-margin>
+          <ion-item item-bcg>
+            <ion-avatar item-left>
+              <img src="../../assets/images/avatar/0.jpg">
+            </ion-avatar>
+            <h2 item-title>ddddddddd</h2>
+            <h3 item-subtitle>cccccccccc</h3>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

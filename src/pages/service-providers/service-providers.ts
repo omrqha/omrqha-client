@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { IonicPage } from 'ionic-angular';
+import { Content, FabButton } from 'ionic-angular';
 
 
 /**
@@ -13,18 +14,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-service-providers',
   templateUrl: 'service-providers.html',
 })
-export class ServiceProvidersPage {
+export class ServiceProvidersPage implements AfterViewInit{
+  @ViewChild(Content)
+  content: Content;
+  @ViewChild(FabButton)
+  fabButton: FabButton;
 
-  domainList: any[];
-
-  constructor(private navCtrl: NavController, private navParams: NavParams) {
-
+  ngAfterViewInit(): void {
+    this.content.ionScroll.subscribe((d) => {
+      this.fabButton.setElementClass("fab-button-out", d.directionY == "down");
+    });
   }
 
 
-  filterServiceProviderByDomain(event){ //this come from domain component emitter event
-    console.log(event);
+  constructor() {
+
   }
+
 
 
 

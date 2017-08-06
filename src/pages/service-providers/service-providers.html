@@ -1,14 +1,22 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title text-left></ion-title>
-  </ion-navbar>
+    <ion-navbar>
+      <ion-title>HomePage</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="presentPopover($event)">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+
 </ion-header>
 <!--Theme Full Image Cards-->
-<ion-content  dir="rtl">
-  <ion-grid no-padding>
+<ion-content has-header dir="rtl">
+
     <service-providers-cards></service-providers-cards>
-  </ion-grid>
+
 </ion-content>
+<ion-fab #fab bottom right>
+  <button button-ion-fab ion-fab (click)="onEvent('onFab', data, $event)">
+    <ion-icon name="options"></ion-icon>
+  </button>
+</ion-fab>
