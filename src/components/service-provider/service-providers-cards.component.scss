@@ -1,47 +1,4 @@
 service-providers-cards {
-  [header-bcg] {
-    position: fixed;
-    z-index: 20;
-    width: 100%;
-    height: 56px;
-    top: 56px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    [icon-medium] {
-      color: theme-colors('mainColors', 'primary') !important;
-      font-size: icon-size('icon-medium') !important;
-    }
-    [span-medium] {
-      color: theme-colors('mainColors', 'primary') !important;
-      font-size: font-size-text('h1');
-    }
-    [header-title] {
-      text-transform: uppercase;
-      margin-bottom: 0;
-      margin-top: 5px;
-    }
-
-    .domain-container{
-      width: 100%;
-      display: block;
-      white-space: nowrap;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
-    .domain-container li {
-      display:inline;
-    }
-    .domain-container .domain-item{
-      width: 80px;
-      display: inline-block;
-      font-size: 16px;
-    }
-    .domain-container .domain-item img{
-      width: 30px;
-    }
-  }
 
 
 

@@ -1,0 +1,9 @@
+<ion-row header-bcg  >
+  <ul class="domain-container">
+    <li *ngFor="let item of subDomains" (click)="filterServiceProviderBySubDomain(item)">
+      <div class="domain-item">
+        <div>{{item.domainName}}</div>
+      </div>
+    </li>
+  </ul>
+</ion-row>

@@ -1,6 +1,9 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { Content, FabButton } from 'ionic-angular';
+import {ServiceProvidersProvider} from "../../providers/service-providers/service-providers";
+import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
+import {Domain} from "../../models/domain/domain.interface";
 
 
 /**
@@ -19,6 +22,11 @@ export class ServiceProvidersPage implements AfterViewInit{
   content: Content;
   @ViewChild(FabButton)
   fabButton: FabButton;
+  serviceProvidersList: ServiceProvider[];
+
+  constructor(private serviceProvidersProvider: ServiceProvidersProvider) {
+
+  }
 
   ngAfterViewInit(): void {
     this.content.ionScroll.subscribe((d) => {
@@ -26,11 +34,10 @@ export class ServiceProvidersPage implements AfterViewInit{
     });
   }
 
-
-  constructor() {
+  getServiceProvidersListByDomain(domain: Domain){
+    this.serviceProvidersProvider.getServiceProvidersList(domain).subscribe((data: ServiceProvider[]) => this.serviceProvidersList = data);
 
   }
-
 
 
 

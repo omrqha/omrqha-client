@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {DomainProvider} from "../../providers/domain/domain";
-import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
+import {Domain} from "../../models/domain/domain.interface";
+import {NavController} from "ionic-angular";
 
 /**
  * Generated class for the DomainComponent component.
@@ -12,21 +13,36 @@ import {ServiceProvider} from "../../models/service-provider/service-provider.in
   selector: 'domain',
   templateUrl: 'domain.component.html'
 })
-export class DomainComponent {
+export class DomainComponent implements OnInit{
 
-  @Output() serviceProviderFilter: EventEmitter<any>;
+  @Output() serviceProviderByDomain: EventEmitter<Domain>;
 
-  filteredServiceProvidersList: ServiceProvider[];
   domainList: any[];
-  constructor(domainProvider: DomainProvider) {
-    this.serviceProviderFilter = new EventEmitter<any>();
-
-    console.log("ss");
+  constructor(private navCtrl: NavController, private domainProvider: DomainProvider) {
+    this.serviceProviderByDomain = new EventEmitter<Domain>();
   }
 
-  filterServiceProvicerByDomain(domain){
-    console.log("1");
-    this.serviceProviderFilter.emit(domain);
+  ngOnInit(){
+    this.domainProvider.getDomainList({}).subscribe((data: Domain[]) => this.initData(data));
+  }
+
+  initData(domainList: Domain[]){
+    this.domainList = domainList;
+  }
+
+  initSubDomain(domainList: Domain[]){
+    this.navCtrl.push('SubDomainPage', {subDomains: domainList});
+  }
+
+  filterServiceProviderByDomain(domain){
+    if(domain.isParent){
+      this.navCtrl.push('SubDomainPage', {subDomainsParentId: domain.domainId});
+      //this.domainProvider.getDomainList({ parentId: domain.domainId }).subscribe((data: Domain[]) => this.initSubDomain(data));
+    }else{
+      // this.serviceProvidersProvider.getServiceProvidersListByDomain(domain).subscribe((data: ServiceProvider[]) => this.filteredServiceProvidersList = data);
+      this.serviceProviderByDomain.emit(domain);
+    }
+
   }
 
 

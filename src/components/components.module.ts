@@ -3,6 +3,7 @@ import { IonicModule } from 'ionic-angular';
 import { ServiceProvidersCardsComponent } from './service-provider/service-providers-cards.component';
 import { ServiceProviderDetailsComponent } from './service-provider-details/service-provider-details.component';
 import { DomainComponent } from './domain/domain.component';
+import { SubDomainComponent } from './sub-domain/sub-domain.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ElasticHeaderDirective } from  '../directives/elastic-header/elastic-header'
 
@@ -13,6 +14,7 @@ import { ElasticHeaderDirective } from  '../directives/elastic-header/elastic-he
     ServiceProvidersCardsComponent,
     ServiceProviderDetailsComponent,
     DomainComponent,
+    SubDomainComponent,
     ElasticHeaderDirective
   ],
   imports: [IonicModule],
@@ -21,6 +23,7 @@ import { ElasticHeaderDirective } from  '../directives/elastic-header/elastic-he
     ServiceProvidersCardsComponent,
     ServiceProviderDetailsComponent,
     DomainComponent,
+    SubDomainComponent,
     ElasticHeaderDirective
   ]
 })

@@ -3,17 +3,20 @@ const domainList: Domain[] = [
   {
     domainId: "1",
     domainName: "Music",
-    domainLogo: ""
+    domainLogo: "",
+    isParent: false
   },
   {
     domainId: "2",
     domainName: "Dance",
-    domainLogo: ""
+    domainLogo: "",
+    isParent: false
   },
   {
     domainId: "1",
     domainName: "Food",
-    domainLogo: ""
+    domainLogo: "",
+    isParent: false
   },
 
 ];

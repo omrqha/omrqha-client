@@ -19,16 +19,15 @@ export class ServiceProvidersProvider {
   constructor(private http:Http, private appSettingsProvider:AppSettingsProvider) {
     console.log('Hello ServiceProvidersProvider Provider');
   }
+  
 
   getServiceProvidersList(query):  Observable<ServiceProvider[]> {
-
-    const { limit = '50', skip = '0', domainId = '0' } = query;
-    return this.http.get(`${this.baseUrl}/serviceProviders?limit=${limit}&skip=${skip}&domainId=${domainId}`)
-      .do((data => console.log(data)))
+    const { limit = '50', skip = '0', domainId, primary} = query;
+    return this.http.get(`${this.baseUrl}/serviceProviders?limit=${limit}&skip=${skip}${domainId ? '&domainId=' + domainId : ''}${primary ? '&primary=' + primary : ''}`)
+      //.do((data => console.log(data)))
       .map((data: Response) => data.json())
-      .do((data => console.log(data)))
+      //.do((data => console.log(data)))
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
-
   }
 
 

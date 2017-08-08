@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>HomePage</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<!--Theme Full Image Cards-->
+<ion-content has-header dir="rtl">
+  <sub-domain (serviceProviderBySubDomain)="getServiceProvidersListByDomain($event)"></sub-domain>
+  <service-providers-cards [loadPrimary]="false" [serviceProvidersList]="serviceProvidersList"></service-providers-cards>
+
+</ion-content>
+<ion-fab #fab bottom right>
+  <button button-ion-fab ion-fab (click)="onEvent('onFab', data, $event)">
+    <ion-icon name="options"></ion-icon>
+  </button>
+</ion-fab>

@@ -18,8 +18,9 @@ export class DomainProvider {
     console.log('Hello DomainProvider Provider');
   }
 
-  getDomainList(): Observable<Domain[]> {
-    return this.http.get(`${this.baseUrl}/domains`)
+  getDomainList(query): Observable<Domain[]> {
+    const { parentId, level = 1 } = query;
+    return this.http.get(`${this.baseUrl}/domains?level=${level}${parentId ? '&parentId=' + parentId : '' }`)
       //.do((data => console.log(data)))
       .map((data: Response) => data.json())
       //.do((data => console.log(data)))

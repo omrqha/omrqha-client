@@ -1,16 +1,4 @@
-<ion-row header-bcg  >
-  <ul class="domain-container">
-    <li *ngFor="let item of domainList" (click)="filterServiceProvicerByDomain(item)">
-      <div class="domain-item">
-        <div>{{item.domainName}}</div>
-        <img src="https://s-media-cache-ak0.pinimg.com/originals/2e/90/fc/2e90fc5c01dbc346d35e47cb92377c11.png">
-      </div>
-    </li>
-  </ul>
-</ion-row>
-
-
-<ion-card (click)="navigateToServiceProvider(item)" *ngFor="let item of filteredServiceProvidersList">
+<ion-card (click)="navigateToServiceProvider(item)" *ngFor="let item of serviceProvidersList">
   <img src="{{item.serviceProviderImagesUrl[0]}}" />
   <div class="card-description">
     <div card-title>{{item.serviceProviderName}}</div>
