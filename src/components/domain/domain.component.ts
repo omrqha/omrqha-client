@@ -37,9 +37,7 @@ export class DomainComponent implements OnInit{
   filterServiceProviderByDomain(domain){
     if(domain.isParent){
       this.navCtrl.push('SubDomainPage', {subDomainsParentId: domain.domainId});
-      //this.domainProvider.getDomainList({ parentId: domain.domainId }).subscribe((data: Domain[]) => this.initSubDomain(data));
     }else{
-      // this.serviceProvidersProvider.getServiceProvidersListByDomain(domain).subscribe((data: ServiceProvider[]) => this.filteredServiceProvidersList = data);
       this.serviceProviderByDomain.emit(domain);
     }
 

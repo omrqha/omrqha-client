@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the TabsPage page.
@@ -7,7 +8,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
+@IonicPage(
+  //{segment: 'home', name: 'השארה'}
+  )
 @Component({
   selector: 'page-tabs',
   templateUrl: 'tabs.html',
@@ -16,7 +19,6 @@ export class TabsPage {
 
   homePage = 'HomePage';
   serviceProvidersPage = 'ServiceProvidersPage';
-  //serviceProvidersPage = ServiceProviderPage;
   tasksPage = 'TasksPage';
   profilePage = 'ProfilePage';
 
