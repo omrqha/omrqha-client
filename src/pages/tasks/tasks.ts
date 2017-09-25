@@ -27,7 +27,7 @@ export class TasksPage implements OnInit {
     //if(this.taskList.length === 0){
       this.taskProvider.getTaskList().subscribe((data: Task[]) => this.initData(data));
     //}
-  }
+  } 
 
   initData(taskList){
     this.taskList = taskList;
