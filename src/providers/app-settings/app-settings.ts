@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 export class AppSettingsProvider {
 
   baseUrl(){
-    return 'http://127.0.0.1:8040/api';
+    return 'http://127.0.0.1:4040/api';
   }
 
 }
