@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import {HomePage} from "../home/home";
 
 /**
  * Generated class for the TabsPage page.

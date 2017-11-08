@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import {Task} from "../../models/task/task.interface";
-import {TaskProvider} from "../../providers/task/task";
-import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 
 /**
  * Generated class for the MissionPage page.
@@ -18,16 +16,16 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
 export class TasksPage implements OnInit {
 
   taskList: Task[];
-  constructor(private taskProvider: TaskProvider, private localStorageProvider: LocalStorageProvider) {
+  constructor() {
   }
 
   async ngOnInit(){
     //let a = await this.localStorageProvider.getTasks();
     //console.log(a);
     //if(this.taskList.length === 0){
-      this.taskProvider.getTaskList().subscribe((data: Task[]) => this.initData(data));
+      //this.taskProvider.getTaskList().subscribe((data: Task[]) => this.initData(data));
     //}
-  } 
+  }
 
   initData(taskList){
     this.taskList = taskList;

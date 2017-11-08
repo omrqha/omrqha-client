@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {SQLite, SQLiteObject} from "@ionic-native/sqlite";
+
 import {Platform} from "ionic-angular";
 
 import { Task } from "../../models/task/task.interface"
@@ -14,12 +14,12 @@ import { Task } from "../../models/task/task.interface"
 @Injectable()
 export class LocalStorageProvider {
 
-  private isOpen: boolean;
 
-  constructor(public _platform: Platform, private localStorage: SQLite) {
+
+  constructor(public _platform: Platform) {
     this._platform.ready().then(() => {
 
-      if(!this.isOpen) {
+ /*     if(!this.isOpen) {
         this.localStorage = new SQLite();
         this.localStorage.create({name: "omrqha.db", location: "default"}).then((db: SQLiteObject) => {
           db.executeSql('CREATE TABLE IF NOT EXISTS tasks (taskId TEXT, categoryName TEXT,selected INTEGER, order INTEGER)', {})
@@ -29,12 +29,12 @@ export class LocalStorageProvider {
           .catch(e => console.log(e));
       }
 
-
+*/
     });
   }
 
   saveTasksToLocalStorage(DataArray: Task[]){
-    this.localStorage.create({
+/*    this.localStorage.create({
       name: 'omrqha.db',
       location: 'default'
     })
@@ -45,11 +45,11 @@ export class LocalStorageProvider {
           console.log("ERROR kod inserta: " + JSON.stringify(error.err));
         });
       })
-      .catch(e => console.log(e));
+      .catch(e => console.log(e));*/
   }
 
   saveTaskToLocalStorage(data: Task){
-    this.localStorage.create({
+/*    this.localStorage.create({
       name: 'omrqha.db',
       location: 'default'
     })
@@ -60,40 +60,13 @@ export class LocalStorageProvider {
           console.log("ERROR kod inserta: " + JSON.stringify(error.err));
         });
       })
-      .catch(e => console.log(e));
+      .catch(e => console.log(e));*/
   }
 
-  getTasks() {
-    return new Promise((resolve, reject) => {
-      this.localStorage.create({
-        name: 'omrqha.db',
-        location: 'default'
-      })
-        .then((db: SQLiteObject) => {
-          db.executeSql("SELECT * FROM tasks", []).then((data) => {
-            let DataArray: Task[] = [];
-            if(data.rows.length > 0) {
-              for(let i = 0; i < data.rows.length; i++) {
-                DataArray.push({
-                  taskId: data.rows.item(i).taskId,
-                  categoryName: data.rows.item(i).categoryName,
-                  taskName: data.rows.item(i).taskName,
-                  selected: data.rows.item(i).selected,
-                  order: data.rows.item(i).order
-                });
-              }
-            }
-            resolve(DataArray);
-          }, (error) => {
-            reject(error);
-          });
-        })
-        .catch(e => console.log(e));
-    });
-  }
+
 
   deleteTablicaMyOfflineData(){
-    this.localStorage.create({
+/*    this.localStorage.create({
       name: 'omrqha.db',
       location: 'default'
     })
@@ -104,7 +77,7 @@ export class LocalStorageProvider {
           console.log("ERROR kod brisanja: " + JSON.stringify(error.err));
         });
       })
-      .catch(e => console.log(e));
+      .catch(e => console.log(e));*/
   }
 
 }
