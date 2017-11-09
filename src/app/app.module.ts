@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { ServiceProvidersProvider } from '../providers/service-providers/service-providers';
 import { DomainProvider } from '../providers/domain/domain';
 import { TaskProvider } from '../providers/task/task';
+import { UserProvider } from '../providers/user/user';
 import { AppSettingsProvider } from '../providers/app-settings/app-settings';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
 
@@ -36,7 +37,8 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
     DomainProvider,
     TaskProvider,
     AppSettingsProvider,
-    LocalStorageProvider
+    LocalStorageProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
