@@ -4,8 +4,10 @@ import { ServiceProvidersCardsComponent } from './service-provider/service-provi
 import { ServiceProviderDetailsComponent } from './service-provider-details/service-provider-details.component';
 import { DomainComponent } from './domain/domain.component';
 import { SubDomainComponent } from './sub-domain/sub-domain.component';
+import { CarouselComponent } from './carousel/carousel.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ElasticHeaderDirective } from  '../directives/elastic-header/elastic-header'
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 
 @NgModule({
@@ -15,16 +17,19 @@ import { ElasticHeaderDirective } from  '../directives/elastic-header/elastic-he
     ServiceProviderDetailsComponent,
     DomainComponent,
     SubDomainComponent,
-    ElasticHeaderDirective
+    ElasticHeaderDirective,
+    CarouselComponent
   ],
-  imports: [IonicModule],
+  imports: [IonicModule,Ionic2RatingModule],
   exports: [
     LoginFormComponent,
     ServiceProvidersCardsComponent,
     ServiceProviderDetailsComponent,
     DomainComponent,
     SubDomainComponent,
-    ElasticHeaderDirective
+    ElasticHeaderDirective,
+    CarouselComponent,
+    Ionic2RatingModule
   ]
 })
 

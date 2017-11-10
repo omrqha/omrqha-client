@@ -1,0 +1,24 @@
+<div class="carousel-title-row">
+  <div class="carousel-title">افضل مشغلي الاقراص</div>
+  <p class="carousel-see">
+    <ion-icon class="carousel-arrow" name="arrow-back"></ion-icon>
+    للكل
+  </p>
+
+</div>
+<ion-scroll scrollX style="height:200px;">
+  <div class="scroll-item" *ngFor="let provider of serviceProvidersList" (click)="navigateToServiceProvider(provider)">
+    <img
+      [src]="provider.serviceProviderImagesUrl[0]">
+    <div class="desc"> ahmad ahmad ahmad ahmad ahmad ahmad ahmad ahmad ahmad</div>
+    <!--<rating [(ngModel)]="rate"-->
+            <!--readOnly="false"-->
+            <!--max="5"-->
+            <!--emptyStarIconName="star-outline"-->
+            <!--halfStarIconName="star-half"-->
+            <!--starIconName="star"-->
+            <!--nullable="false">-->
+    <!--</rating>-->
+  </div>
+</ion-scroll>
+
