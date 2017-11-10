@@ -19,9 +19,9 @@ export class UserProvider {
 
   createUser(user: User): Observable<User> {
     return this.http.post(`${this.baseUrl}/users`, user)
-      .do((data => console.log(data)))
+      //.do((data => console.log(data)))
       .map((data: Response) => data.json())
-      .do((data => console.log(data)))
+      //.do((data => console.log(data)))
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
 
   }

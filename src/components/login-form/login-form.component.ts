@@ -77,8 +77,7 @@ export class LoginFormComponent {
         .catch(e => console.log('Error logging into Facebook', e));
     }else{
       this.user = {
-        fbAccessToken: "1",
-        fbUserId: "1"
+        access_token: 'EAACgIlXZAWhkBAMe2o5Hh20zPwj1wZAgSZB6IZAtYawJWwk56ry0x0soZBK5chGvj3yWCoINlmelxqxvr3YQMz9IDx4QkM8gB49y6fOZCdnI84V4uBvTZC68jCBtS2ZCcsW6W08U5yzMUvUunwf6l9MfH1JS7wqVFW4TSZBwOLYFjZAIrKb8nJg2nSJ7GIjlbLGJBmkSO43bmFfQZDZD'
       };
       this.userProvider.createUser(this.user).subscribe((data: User) => console.log(data));
 
