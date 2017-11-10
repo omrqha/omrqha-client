@@ -59,15 +59,12 @@ export class LoginFormComponent {
 
   loginByFacebook(){
     if(this.platform.is('cordova')){
-      let _this = this;
+
       this.fb.login(['public_profile', 'user_friends', 'email'])
         .then(res => {
           if(res.status === "connected") {
-
-
             this.user = {
-              fbAccessToken: res.authResponse.accessToken,
-              fbUserId: res.authResponse.userID
+              access_token: res.authResponse.accessToken
             };
 
             this.isLoggedIn = true;

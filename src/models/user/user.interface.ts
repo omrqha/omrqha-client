@@ -1,4 +1,3 @@
 export interface User {
-  fbAccessToken?: string;
-  fbUserId?: string;
+  access_token?: string;
 }
