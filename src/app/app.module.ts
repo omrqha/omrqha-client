@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { ServiceProvidersProvider } from '../providers/service-providers/service-providers';
@@ -13,6 +14,7 @@ import { TaskProvider } from '../providers/task/task';
 import { UserProvider } from '../providers/user/user';
 import { AppSettingsProvider } from '../providers/app-settings/app-settings';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
+import { HttpClient } from '../providers/http-client/http-client';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -38,7 +41,8 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
     TaskProvider,
     AppSettingsProvider,
     LocalStorageProvider,
-    UserProvider
+    UserProvider,
+    HttpClient
   ]
 })
 export class AppModule {}

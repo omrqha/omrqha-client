@@ -20,7 +20,7 @@ export class UserProvider {
   createUser(user: User): Observable<User> {
     return this.http.post(`${this.baseUrl}/users`, user)
       //.do((data => console.log(data)))
-      .map((data: Response) => data.json())
+      .map((data: Response) => data.headers.get('x-auth-token'))
       //.do((data => console.log(data)))
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
 
