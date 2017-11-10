@@ -54,7 +54,9 @@ export class LoginFormComponent {
             };
 
             this.isLoggedIn = true;
-            this.userProvider.createUser(this.user).subscribe((data: User) => console.log(data));
+            this.userProvider.createUser(this.user).subscribe((data: User) => {
+              this.navCtrl.push('TabsPage');
+            });
           } else {
             this.isLoggedIn = false;
           }
@@ -66,6 +68,7 @@ export class LoginFormComponent {
       };
       this.userProvider.createUser(this.user).subscribe((data: string) => {
         this.localStorageProvider.setToken(data);
+        this.navCtrl.push('TabsPage');
       });
 
     }
