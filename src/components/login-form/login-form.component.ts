@@ -46,7 +46,7 @@ export class LoginFormComponent {
 
   loginByFacebook(){
     if(this.platform.is('cordova')){
-      this.fb.login(['public_profile', 'user_friends', 'email', 'gender'])
+      this.fb.login(['public_profile', 'user_friends', 'email'])
         .then(res => {
           if(res.status === "connected") {
             this.user = {
@@ -54,7 +54,8 @@ export class LoginFormComponent {
             };
 
             this.isLoggedIn = true;
-            this.userProvider.createUser(this.user).subscribe((data: User) => {
+            this.userProvider.createUser(this.user).subscribe((data: string) => {
+              this.localStorageProvider.setToken(data);
               this.navCtrl.push('TabsPage');
             });
           } else {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
 import {ServiceProvidersProvider} from "../../providers/service-providers/service-providers";
 import { ENTERPRISE_LIST } from '../../mocks/enterprise/enterprise';
