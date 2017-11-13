@@ -18,11 +18,14 @@ export class TaskProvider {
   }
 
   getTaskList(): Observable<Task[]> {
-    return this.http.get(`${this.baseUrl}/tasks`)
+    return this.http.get(`${this.baseUrl}/users/tasks`)
       //.do((data => console.log(data)))
       .map((data: Response) => data.json())
       //.do((data => console.log(data)))
-      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
+      .catch((error: Response) => {
+        this.appSettingsProvider.checkIfUnauthorized(error);
+        Observable.throw(error.json().error || "Server error.");
+      })
 
   }
 

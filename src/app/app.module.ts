@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 import { Storage, IonicStorageModule } from '@ionic/storage';
-
 import { MyApp } from './app.component';
 import { ServiceProvidersProvider } from '../providers/service-providers/service-providers';
 import { DomainProvider } from '../providers/domain/domain';

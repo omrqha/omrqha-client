@@ -1,7 +1,10 @@
 export interface Task {
-  taskId: string;
-  categoryName?: string;
-  taskName?: string;
-  selected: number;
-  order?: number;
+  categoryName: string;
+  order: number;
+  tasks: [{
+    taskName: string,
+    selected: boolean,
+    order: number
+  }],
+
 }

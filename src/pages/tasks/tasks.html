@@ -1,29 +1,22 @@
-<!--
-  Generated template for the MissionPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>MissionPage</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-  <ion-grid no-padding>
-    <ion-row>
-      <ion-col col-12 no-padding>
-        <ion-list>
-          <ion-item item-bcg *ngFor="let item of taskList">
-            <ion-label item-title>{{item.taskName}}</ion-label>
-            <ion-checkbox [checked]="item.selected"></ion-checkbox>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div *ngFor="let item of taskList">
+    <span>{{item.categoryName}}</span>
+    <ion-list>
+      <ion-item item-bcg *ngFor="let task of item.tasks">
+        <ion-label item-title>{{task.taskName}}</ion-label>
+        <ion-checkbox [(ngModel)]="task.selected" (ionChange)="updateTask()"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
+<ion-fab #fab bottom right>
+  <button button-ion-fab ion-fab (click)="onEvent('onFab', data, $event)">
+    <ion-icon name="options"></ion-icon>
+  </button>
+</ion-fab>

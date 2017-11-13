@@ -18,17 +18,9 @@ export class UserProvider {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post(`${this.baseUrl}/users`, user)
+    return this.http.post(`${this.baseUrl}/users/auth/facebook`, user)
       //.do((data => console.log(data)))
       .map((data: Response) => data.headers.get('x-auth-token'))
-      //.do((data => console.log(data)))
-      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
-
-  }
-  getTaskList(): Observable<User[]> {
-    return this.http.get(`${this.baseUrl}/tasks`)
-      //.do((data => console.log(data)))
-      .map((data: Response) => data.json())
       //.do((data => console.log(data)))
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
 
