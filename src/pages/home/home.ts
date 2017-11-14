@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, PopoverController} from 'ionic-angular';
 import { ENTERPRISE_LIST } from '../../mocks/enterprise/enterprise';
 import { Enterprise } from '../../models/enterprise/enterprise';
-
+import { MenuPage } from '../../pages/menu/menu';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -15,14 +15,17 @@ export class HomePage {
   @ViewChild('popoverContent', { read: ElementRef }) content: ElementRef;
   @ViewChild('popoverText', { read: ElementRef }) text: ElementRef;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private popoverCtrl: PopoverController) {
   }
 
   ionViewDidLoad() {
     console.log(this.enterpriseList);
   }
 
-
-
-
+  menuPresent(myEvent) {
+    const popover = this.popoverCtrl.create(MenuPage);
+    popover.present({
+      ev: myEvent
+    });
+  }
 }

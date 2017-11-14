@@ -14,6 +14,7 @@ import { UserProvider } from '../providers/user/user';
 import { AppSettingsProvider } from '../providers/app-settings/app-settings';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
 import {HttpInterceptor} from '../auth/http.interceptor';
+import { MenuPageModule } from '../pages/menu/menu.module';
 
 export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, storage: Storage) {
   return new HttpInterceptor(xhrBackend, requestOptions, storage);
@@ -27,7 +28,8 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpModule
+    HttpModule,
+    MenuPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
