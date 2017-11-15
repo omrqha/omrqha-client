@@ -26,7 +26,16 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+        iconMode: 'ios',
+        modalEnter: 'modal-slide-in',
+        modalLeave: 'modal-slide-out',
+        tabsPlacement: 'bottom',
+        pageTransition: 'ios-transition',
+        backButtonIcon: 'arrow-back'
+      }
+    ),
+
     IonicStorageModule.forRoot(),
     HttpModule,
     MenuPageModule

@@ -15,8 +15,18 @@
     </ion-list>
   </div>
 </ion-content>
-<ion-fab #fab bottom right>
+<ion-fab #fabAdd bottom left>
   <button button-ion-fab ion-fab (click)="addTask()">
-    <ion-icon name="add"></ion-icon>
+    <ion-icon name="md-add"></ion-icon>
   </button>
+</ion-fab>
+
+<ion-fab #fab4 bottom right>
+  <button button-ion-fab ion-fab color="dark"><ion-icon name="arrow-dropup"></ion-icon></button>
+  <ion-fab-list side="top">
+    <button button-ion-fab ion-fab (click)="openSocial('facebook', fab4)"><ion-icon name="logo-facebook"></ion-icon></button>
+    <button button-ion-fab ion-fab (click)="openSocial('twitter', fab4)"><ion-icon name="logo-twitter"></ion-icon></button>
+    <button button-ion-fab ion-fab (click)="openSocial('vimeo', fab4)"><ion-icon name="logo-vimeo"></ion-icon></button>
+    <button button-ion-fab ion-fab (click)="openSocial('googleplus', fab4)"><ion-icon name="logo-googleplus"></ion-icon></button>
+  </ion-fab-list>
 </ion-fab>

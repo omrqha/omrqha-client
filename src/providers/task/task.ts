@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
-import { Tasks } from '../../models/task/tasks.interface'
+import { Tasks, Task } from '../../models/task/tasks.interface'
 import { AppSettingsProvider } from '../app-settings/app-settings';
 
 @Injectable()
@@ -24,9 +24,16 @@ export class TaskProvider {
       //.do((data => console.log(data)))
       .catch((error: Response) => {
         this.appSettingsProvider.checkIfUnauthorized(error);
-        Observable.throw(error.json().error || "Server error.");
+        return Observable.throw(error.json().error || "Server error.");
       })
-
+  }
+  //this.appSettingsProvider.checkIfUnauthorized(error);
+  updateTasks(tasks: Task[]): Observable<Tasks> {
+    return this.http.put(`${this.baseUrl}/users/tasks`, {tasks: tasks})
+    //.do((data => console.log(data)))
+      .map((data: Response) => data)
+      //.do((data => console.log(data)))
+      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
   }
 
 }

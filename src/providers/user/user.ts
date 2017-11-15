@@ -23,7 +23,8 @@ export class UserProvider {
       .map((data: Response) => data.headers.get('x-auth-token'))
       //.do((data => console.log(data)))
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
-
   }
+
+
 
 }

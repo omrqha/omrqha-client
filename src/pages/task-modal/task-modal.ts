@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
-import {Category} from "../../models/task/category.interface";
+import {Category} from "../../models/task/tasks.interface";
 
 /**
  * Generated class for the TaskModalPage page.
@@ -27,6 +27,10 @@ export class TaskModalPage {
   }
 
   closeModal(){
+    this.view.dismiss();
+  }
+
+  done() {
     this.view.dismiss({ categoryName: this.categoryName, taskName: this.taskName });
   }
 
