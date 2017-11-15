@@ -22,7 +22,6 @@ export class TasksPage implements OnInit, AfterViewInit {
 
   async ngOnInit(){
     this.taskProvider.getTaskList().subscribe((data: Tasks) => {
-      debugger;
       for (let obj of data.tasksCategories) {
         this.tasksCategories.push(obj);
       }
