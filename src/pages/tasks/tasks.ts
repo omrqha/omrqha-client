@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import {IonicPage, Modal, ModalController, ModalOptions} from 'ionic-angular';
-import { Content, FabButton } from 'ionic-angular';
+import { Content } from 'ionic-angular';
 import {Tasks, Task, Category} from "../../models/task/tasks.interface";
 import {TaskProvider} from "../../providers/task/task";
 
@@ -11,11 +11,11 @@ import {TaskProvider} from "../../providers/task/task";
   templateUrl: 'tasks.html',
 })
 export class TasksPage implements OnInit, AfterViewInit {
-  @ViewChild(Content)
-  content: Content;
-  @ViewChild(FabButton)
-  fabButton: FabButton;
+  @ViewChild(Content) content: Content;
+  @ViewChild('fabAdd') addFabButton: any;
+  @ViewChild('fabFilter') filterFabButton: any;
   taskList: Task[] = [];
+  filteredTaskList: Task[] = [];
   tasksCategories: Category[] = [];
   constructor(private taskProvider: TaskProvider, private modal: ModalController) {
   }
@@ -33,7 +33,8 @@ export class TasksPage implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.content.ionScroll.subscribe((d) => {
-      this.fabButton.setElementClass("fab-button-out", d.directionY == "down");
+      this.filterFabButton._mainButton.setElementClass("fab-button-out", d.directionY == "down");
+      this.addFabButton._mainButton.setElementClass("fab-button-out", d.directionY == "down");
     });
   }
 
@@ -41,7 +42,11 @@ export class TasksPage implements OnInit, AfterViewInit {
     console.log('ionViewDidLoad MissionPage');
   }
 
-  updateTask(){
+  filterTasks(query){
+    this.filteredTaskList = this.taskList;
+    if(query === 'all'){
+      return;
+    }
 
   }
 

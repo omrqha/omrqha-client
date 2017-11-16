@@ -13,7 +13,7 @@ import { AppSettingsProvider } from '../app-settings/app-settings';
 @Injectable()
 export class UserProvider {
   private baseUrl:string = this.appSettingsProvider.baseUrl();
-
+  private user: User;
   constructor(private http:Http, private appSettingsProvider:AppSettingsProvider) {
   }
 
@@ -25,6 +25,22 @@ export class UserProvider {
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
   }
 
+  getUser(): Observable<User> {
+    return this.http.get(`${this.baseUrl}/users/auth/me`)
+    //.do((data => console.log(data)))
+      .map((data: Response) => {
+        this.user = data.json();
+        return data.json()
+      })
+      //.do((data => console.log(data)))
+      .catch((error: Response) => {
+        this.appSettingsProvider.checkIfUnauthorized(error);
+        return Observable.throw(error.json().error || "Server error.")
+      })
+  }
 
+  getCurrentUser(): User{
+    return this.user;
+  }
 
 }

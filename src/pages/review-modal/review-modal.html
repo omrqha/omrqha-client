@@ -1,0 +1,38 @@
+<ion-header dir="rtl">
+  <ion-navbar>
+    <ion-title>reviewModal</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="done()">
+        <ion-icon name="md-done-all"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding dir="rtl">
+
+  <ion-item center text-center item-bcg no-margin padding-right>
+    <ion-icon *ngFor="let item of newRatingArray; let i = index" (click)="onStarClass(i)">
+      <i icon-medium *ngIf="item.isActive" class="icon {{item.iconActive}}"></i>
+      <i icon-medium *ngIf="!item.isActive" class="icon {{item.iconInactive}}"></i>
+    </ion-icon>
+  </ion-item>
+
+  <ion-item no-padding >
+    <ion-label color="secondary" floating>تعليق</ion-label>
+    <ion-textarea required [(ngModel)]="comment"></ion-textarea>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar (click)="done()" align="center">
+    <ion-title>اضف</ion-title>
+  </ion-toolbar>
+</ion-footer>

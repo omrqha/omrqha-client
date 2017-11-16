@@ -19,7 +19,7 @@ export class ServiceProvidersProvider {
   constructor(private http:Http, private appSettingsProvider:AppSettingsProvider) {
     console.log('Hello ServiceProvidersProvider Provider');
   }
-  
+
 
   getServiceProvidersList(query):  Observable<ServiceProvider[]> {
     const { limit = '50', skip = '0', domainId, primary} = query;
@@ -30,5 +30,12 @@ export class ServiceProvidersProvider {
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
   }
 
+  updateServiceProvider(serviceProvider: ServiceProvider): Observable<ServiceProvider> {
+    return this.http.put(`${this.baseUrl}/serviceProviders/${serviceProvider.serviceProviderId}`, serviceProvider)
+    //.do((data => console.log(data)))
+      .map((data: Response) => data.json())
+      //.do((data => console.log(data)))
+      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
+  }
 
 }
