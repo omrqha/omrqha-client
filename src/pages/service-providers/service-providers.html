@@ -12,11 +12,11 @@
 <!--Theme Full Image Cards-->
 <ion-content has-header dir="rtl">
     <domain (serviceProviderByDomain)="getServiceProvidersListByDomain($event)"></domain>
-    <service-providers-cards [loadPrimary]="true" [serviceProvidersList]="serviceProvidersList"></service-providers-cards>
+    <service-providers-cards [loadPrimary]="true" [serviceProvidersList]="serviceProvidersList" ></service-providers-cards>
 
 </ion-content>
 <ion-fab #fab bottom left>
-  <button button-ion-fab ion-fab (click)="onEvent('onFab', data, $event)">
+  <button button-ion-fab ion-fab (click)="filter()">
     <ion-icon name="options"></ion-icon>
   </button>
 </ion-fab>
