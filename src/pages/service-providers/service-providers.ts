@@ -36,7 +36,6 @@ export class ServiceProvidersPage implements AfterViewInit{
 
   getServiceProvidersListByDomain(domain: Domain){
     this.serviceProvidersProvider.getServiceProvidersList(domain).subscribe((data: ServiceProvider[]) => this.serviceProvidersList = data);
-
   }
 
 

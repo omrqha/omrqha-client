@@ -30,6 +30,7 @@ export class ServiceProvidersProvider {
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
   }
 
+
   updateServiceProvider(serviceProvider: ServiceProvider): Observable<ServiceProvider> {
     return this.http.put(`${this.baseUrl}/serviceProviders/${serviceProvider.serviceProviderId}`, serviceProvider)
     //.do((data => console.log(data)))

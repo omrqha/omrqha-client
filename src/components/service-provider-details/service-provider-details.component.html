@@ -7,8 +7,9 @@
     <ion-row>
       <ion-col col-12>
         <ion-item no-lines >
-          <ion-icon icon-small >
-            <i class="icon icon-thumb-up"></i>
+          <ion-icon (click)="addRemoveFavorite()" icon-small >
+            <i *ngIf="isServicePorviderFavorite()" class="icon icon-heart"></i>
+            <i *ngIf="!isServicePorviderFavorite()" class="icon icon-heart-outline"></i>
           </ion-icon>
           <ion-icon icon-small >
             <i class="icon icon-comment"></i>

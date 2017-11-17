@@ -53,8 +53,8 @@ export class ServiceProviderDetailsComponent {
           score += item.score;
         });
         average = score/count;
-
       }
+
       this.serviceProvider.rating = { count, average };
 
       for (let i = 0; i < average ; i++) {
@@ -83,4 +83,15 @@ export class ServiceProviderDetailsComponent {
     })
   };
 
+  isServicePorviderFavorite () {
+    return this.userProvider.isServiceProviderFavorite(this.serviceProvider);
+  }
+
+  addRemoveFavorite() {
+    if(this.isServicePorviderFavorite()){
+      this.userProvider.removeServiceProviderFromFavorites(this.serviceProvider);
+    }else{
+      this.userProvider.addServiceProviderToFavorites(this.serviceProvider);
+    }
+  }
 }

@@ -19,6 +19,7 @@ export class TabsPage {
   homePage = 'HomePage';
   serviceProvidersPage = 'ServiceProvidersPage';
   tasksPage = 'TasksPage';
+  favoritesPage = 'FavoritesPage';
   profilePage = 'ProfilePage';
 
   constructor() {
