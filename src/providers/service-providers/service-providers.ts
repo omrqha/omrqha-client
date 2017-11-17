@@ -22,9 +22,17 @@ export class ServiceProvidersProvider {
 
 
   getServiceProvidersList(query):  Observable<ServiceProvider[]> {
-    const { limit = '50', skip = '0', domainId, primary} = query;
-    return this.http.get(`${this.baseUrl}/serviceProviders?limit=${limit}&skip=${skip}${domainId ? '&domainId=' + domainId : ''}${primary ? '&primary=' + primary : ''}`)
+    const { limit = '50', skip = '0', domainId, primary,filter} = query;
+    return this.http.get(`${this.baseUrl}/serviceProviders?limit=${limit}&skip=${skip}${domainId ? '&domainId=' + domainId : ''}${primary ? '&primary=' + primary : ''}${filter ? '&filter=' + JSON.stringify(filter) : ''}`)
       //.do((data => console.log(data)))
+      .map((data: Response) => data.json())
+      //.do((data => console.log(data)))
+      .catch((error: Response) => Observable.throw(error.json().error || "Server error."))
+  }
+
+  getAreasList():  Observable<String[]> {
+    return this.http.get(`${this.baseUrl}/serviceProviders/getAreasList`)
+    //.do((data => console.log(data)))
       .map((data: Response) => data.json())
       //.do((data => console.log(data)))
       .catch((error: Response) => Observable.throw(error.json().error || "Server error."))

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
 import {ServiceProvidersProvider} from "../../providers/service-providers/service-providers";
-import {NavController} from "ionic-angular";
+import {Events, NavController} from "ionic-angular";
 
 @Component({
   selector: 'service-providers-cards',
@@ -11,7 +11,10 @@ export class ServiceProvidersCardsComponent implements OnInit{
   @Input() serviceProvidersList: ServiceProvider[];
   @Input() loadPrimary: boolean;
 
-  constructor(private navCtrl: NavController, private serviceProvidersProvider:ServiceProvidersProvider) {
+  constructor(private navCtrl: NavController, private serviceProvidersProvider:ServiceProvidersProvider,public events: Events) {
+    events.subscribe('filter:updated', (filter) => {
+      this.serviceProvidersProvider.getServiceProvidersList({ filter: filter }).subscribe((data: ServiceProvider[]) => this.serviceProvidersList = data);
+    });
   }
 
   ngOnInit(){

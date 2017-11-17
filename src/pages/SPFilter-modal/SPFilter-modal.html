@@ -1,0 +1,51 @@
+<ion-header dir="rtl">
+  <ion-navbar>
+    <ion-title>filter</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="done()">
+        <ion-icon name="md-done-all"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding dir="rtl">
+  <ion-item no-padding>
+    <ion-label color="secondary" floating>الاسم</ion-label>
+    <ion-input required type="text" [(ngModel)]="filter.SPName"></ion-input>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="filter.area">
+    <ion-list-header>
+      المنطقة
+    </ion-list-header>
+    <ion-item *ngFor="let area of areasList">
+      <ion-label>{{area}}</ion-label>
+      <ion-radio [value]="area"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-list >
+    <ion-list-header>
+      رتب
+    </ion-list-header>
+    <ion-item>
+      <ion-label>تقييم</ion-label>
+      <ion-checkbox [(ngModel)]="filter.toOrderBy"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar (click)="done()" align="center">
+    <ion-title>ابحث</ion-title>
+  </ion-toolbar>
+</ion-footer>
