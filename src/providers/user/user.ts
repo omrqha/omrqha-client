@@ -30,7 +30,21 @@ export class UserProvider {
     //.do((data => console.log(data)))
       .map((data: Response) => {
         this.user = data.json();
-        return data.json()
+        return data.json();
+      })
+      //.do((data => console.log(data)))
+      .catch((error: Response) => {
+        this.appSettingsProvider.checkIfUnauthorized(error);
+        return Observable.throw(error.json().error || "Server error.")
+      })
+  }
+
+  updateUser(user: User): Observable<User> {
+    return this.http.put(`${this.baseUrl}/users/auth/facebook`, user)
+    //.do((data => console.log(data)))
+      .map((data: Response) => {
+        this.user = data.json();
+        return data.json();
       })
       //.do((data => console.log(data)))
       .catch((error: Response) => {

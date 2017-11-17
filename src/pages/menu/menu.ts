@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {IonicPage, NavController, ViewController} from 'ionic-angular';
 import {LocalStorageProvider} from "../../providers/local-storage/local-storage";
 
 /**
@@ -16,11 +16,15 @@ import {LocalStorageProvider} from "../../providers/local-storage/local-storage"
 })
 export class MenuPage {
 
-  constructor(private navCtrl: NavController, private localStorageProvier : LocalStorageProvider) {}
+  constructor(private navCtrl: NavController, private localStorageProvier : LocalStorageProvider, private viewCtrl: ViewController) {}
 
   logout() {
     this.localStorageProvier.setToken(null);
     this.navCtrl.push('LoginPage');
     this.navCtrl.setRoot('LoginPage');
+  }
+  goToSettings() {
+    this.navCtrl.push('SettingsPage');
+    this.viewCtrl.dismiss();
   }
 }
