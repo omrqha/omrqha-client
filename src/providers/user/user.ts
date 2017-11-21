@@ -7,7 +7,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
-import { User, FavoritesServiceProviders } from '../../models/user/user.interface'
+import { User } from '../../models/user/user.interface'
 import { AppSettingsProvider } from '../app-settings/app-settings';
 import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
 
@@ -22,16 +22,16 @@ export class UserProvider {
 
   private fillServiceProvidersFavorites (){
     this.user.favoritesServiceProviders.forEach((item) => {
-      this.favoritesServiceProviders[item.serviceProviderId] = true;
+      this.favoritesServiceProviders[item] = true;
     })
   }
 
-  private getServiceProvidersFavoritesFromLocal (): FavoritesServiceProviders[]{
-    let localFavoritesServiceProviders: FavoritesServiceProviders[] = [];
+  private getServiceProvidersFavoritesFromLocal (): string[]{
+    let localFavoritesServiceProviders: string[] = [];
     for (let serviceProviderId in this.favoritesServiceProviders) {
       let value = this.favoritesServiceProviders[serviceProviderId];
       if(value){
-        localFavoritesServiceProviders.push({serviceProviderId})
+        localFavoritesServiceProviders.push(serviceProviderId);
       }
     }
     return localFavoritesServiceProviders;

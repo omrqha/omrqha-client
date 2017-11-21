@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {Events, IonicPage, Modal, ModalController, ModalOptions} from 'ionic-angular';
+import {Events, IonicPage, Modal, ModalController, ModalOptions, PopoverController} from 'ionic-angular';
 import {Content, FabButton} from 'ionic-angular';
 import {ServiceProvidersProvider} from "../../providers/service-providers/service-providers";
 import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
@@ -24,11 +24,9 @@ export class ServiceProvidersPage implements AfterViewInit {
   fabButton: FabButton;
   serviceProvidersList: ServiceProvider[];
 
-  constructor(private serviceProvidersProvider: ServiceProvidersProvider, private modal: ModalController,public events: Events) {
+  constructor(private serviceProvidersProvider: ServiceProvidersProvider, private modal: ModalController,public events: Events, private popoverCtrl: PopoverController) {
 
   }
-
-
 
   ngAfterViewInit(): void {
     this.content.ionScroll.subscribe((d) => {
@@ -40,8 +38,14 @@ export class ServiceProvidersPage implements AfterViewInit {
     this.serviceProvidersProvider.getServiceProvidersList(domain).subscribe((data: ServiceProvider[]) => this.serviceProvidersList = data);
   }
 
-  filter() {
+  menuPresent(myEvent) {
+    const popover = this.popoverCtrl.create('MenuPage');
+    popover.present({
+      ev: myEvent
+    });
+  }
 
+  filter() {
     const SbFilterModalOptions: ModalOptions = {
       enableBackdropDismiss: true
     };

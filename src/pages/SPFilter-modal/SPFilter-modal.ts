@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, ViewController } from 'ionic-angular';
 import {Category} from "../../models/task/tasks.interface";
-import {ServiceProvider} from "../../models/service-provider/service-provider.interface";
 import {ServiceProvidersProvider} from "../../providers/service-providers/service-providers";
 
 /**
@@ -22,7 +21,7 @@ export class SPFilterModalPage {
   filter: any = {};
   categoryName: string = 'other';
   taskName: string;
-  constructor(private view: ViewController, private navParams: NavParams,private serviceProvidersProvider: ServiceProvidersProvider) {
+  constructor(private view: ViewController, private serviceProvidersProvider: ServiceProvidersProvider) {
     // this.tasksCategories = this.navParams.get('tasksCategories');
     this.serviceProvidersProvider.getAreasList().subscribe((data: String[]) => this.areasList = data);
   }

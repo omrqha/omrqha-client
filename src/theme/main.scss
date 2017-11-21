@@ -568,6 +568,9 @@ $searchbar-md-input-clear-icon-color: theme-colors('mainColors', 'secondary');
   ion-list > .item:last-child, ion-list > .item-wrapper:last-child .item {
       border-bottom: 1px solid theme-colors('mainColors', 'accent') !important;
   }
+.list-md .item-block .item-inner {
+  border-bottom: 1px solid #dedede !important;
+}
 
    ion-list > .item:first-child, ion-list > .item-wrapper:first-child .item{
      border-top: none !important;

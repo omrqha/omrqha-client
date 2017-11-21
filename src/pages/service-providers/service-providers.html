@@ -2,18 +2,16 @@
     <ion-navbar>
       <ion-title>HomePage</ion-title>
       <ion-buttons end>
-        <button ion-button icon-only (click)="presentPopover($event)">
-          <ion-icon name="search"></ion-icon>
+        <button ion-button icon-only (click)="menuPresent($event)">
+          <ion-icon name="more"></ion-icon>
         </button>
       </ion-buttons>
     </ion-navbar>
-
 </ion-header>
-<!--Theme Full Image Cards-->
+
 <ion-content has-header dir="rtl">
     <domain (serviceProviderByDomain)="getServiceProvidersListByDomain($event)"></domain>
     <service-providers-cards [loadPrimary]="true" [serviceProvidersList]="serviceProvidersList" ></service-providers-cards>
-
 </ion-content>
 <ion-fab #fab bottom left>
   <button button-ion-fab ion-fab (click)="filter()">

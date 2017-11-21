@@ -1,19 +1,64 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>MissionPage</ion-title>
+    <ion-title>مهمات</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="switchEditMode()">
+        <ion-icon *ngIf="editing" name="md-create"></ion-icon>
+        <ion-icon *ngIf="!editing" name="md-done-all"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="menuPresent($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <div *ngFor="let item of taskList">
-    <span>{{item.categoryName}}</span>
-    <ion-list>
-      <ion-item item-bcg *ngFor="let task of item.tasks">
-        <ion-label item-title>{{task.taskName}}</ion-label>
-        <ion-checkbox [(ngModel)]="task.selected" (ionChange)="updateTask()"></ion-checkbox>
+<ion-content >
+<!--  <div *ngFor="let item of filteredTaskList">
+    <div *ngIf="item.tasks && item.tasks.length > 0">
+      <span>{{item.categoryName}}</span>
+      <ion-list>
+        <ion-item item-bcg *ngFor="let task of item.tasks">
+          <ion-label item-title>{{task.taskName}}</ion-label>
+          <ion-checkbox [(ngModel)]="task.selected"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>-->
+
+  <ion-grid no-padding>
+    <ion-row *ngFor="let item of filteredTaskList; let i = index;">
+      <h2 item-title>{{item.categoryName}}</h2>
+      <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+        <ion-list no-margin [reorder]="editing" (ionItemReorder)="reorderItems(item.categoryName, $event)">
+          <ion-item  dir="ltr" item-bcg *ngFor="let task of item.tasks">
+            <button clear="true" *ngIf="editing" (click)="removeTask(item.tasks, i)" ion-button icon-only item-end>
+              <ion-icon color="danger" (click)="removeTask(item.tasks, i)"  name="md-close"></ion-icon>
+            </button>
+            <ion-label dir="rtl" item-title>{{task.taskName}}</ion-label>
+            <ion-checkbox dir="rtl" [(ngModel)]="task.selected"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+<!--  <ion-list class="chat-sliding-demo">
+    <ion-list-header>
+      Playlist
+    </ion-list-header>
+
+    <ion-item-group [reorder]="editing" (ionItemReorder)="reorderData($event)">
+      <ion-item *ngFor="let song of songs">
+        <h2>{{ song.title }}</h2>
+        <p>{{ song.band }} • {{ song.album }}</p>
       </ion-item>
-    </ion-list>
-  </div>
+    </ion-item-group>
+  </ion-list>-->
+
 </ion-content>
 <ion-fab #fabAdd bottom right>
   <button button-ion-fab ion-fab (click)="addTask()">
@@ -25,11 +70,11 @@
 <ion-fab #fabFilter bottom left>
   <button button-ion-fab ion-fab color="dark"><ion-icon name="options"></ion-icon></button>
   <ion-fab-list side="top">
-    <button button-ion-fab ion-fab (click)="filterTasks('done')">
+    <button button-ion-fab ion-fab (click)="filterTasks('done', fabFilter)">
       <ion-icon name="md-done-all"></ion-icon>
     </button>
     <ion-label class="custom-fab-label done-label">المنتهية</ion-label>
-    <button button-ion-fab ion-fab (click)="filterTasks('all')">
+    <button button-ion-fab ion-fab (click)="filterTasks('all', fabFilter)">
       <ion-icon name="logo-buffer"></ion-icon>
     </button>
     <ion-label class="custom-fab-label all-label">الكل</ion-label>
